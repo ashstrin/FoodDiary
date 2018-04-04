@@ -4,4 +4,8 @@ class DisplayLogController{
     public function __construct(){
         $this->displaylog_model = DisplayLogModel::getDisplayLogModel();
     }
+    public function index(){
+        $view = new DisplayLogIndexView();
+        $view->display();
+    }
 }
