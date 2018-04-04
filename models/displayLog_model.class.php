@@ -14,7 +14,7 @@ class DisplayLogModel{
         }
         return self::$_instance;
     }
-    public function display($num){
+    public function listLog($num){
         $sql = "SELECT * FROM food_log LIMIT $num";
         $query = $this->db_connection->query($sql);
         
@@ -25,9 +25,20 @@ class DisplayLogModel{
             return 0;
             }
         else{
+            $logs = array();
             while($obj = $query->fetch_object()){
-                
+                $log = new EnterLog();
+                $logs[] = $log;
                 }
+                return $logs;
+            }
+        }
+        public function viewEntry($logID){
+            $qurty = "SELECT * FROM food_log WHERE id='$logID'";
+            $this->db_connection->query($query);
+            while($obj = $query->fetch_object()){
+                $log = new EnterLog();
+                return $log;
             }
         }
     }
